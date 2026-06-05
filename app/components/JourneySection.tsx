@@ -178,7 +178,7 @@ export default function JourneySection() {
           </div>
 
           {/* Telemetry SVG Graph Container with pt- clearance for headings */}
-          <div className="pt-[180px] flex-1 min-h-[360px] w-full flex items-center justify-center">
+          <div className="pt-[240px] flex-1 min-h-[360px] w-full flex items-center justify-center">
             <svg viewBox="50 80 700 440" className="h-full w-full select-none text-text-secondary overflow-visible">
               <defs>
                 <linearGradient id="cyan-gradient" x1="0%" y1="0%" x2="100%" y2="100%">

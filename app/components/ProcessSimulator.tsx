@@ -76,7 +76,7 @@ export default function ProcessSimulator() {
   const [running, setRunning] = useState(false);
   const [progress, setProgress] = useState(0);
   const [visibleLogs, setVisibleLogs] = useState<LogLine[]>([]);
-  const logEndRef = useRef<HTMLDivElement>(null);
+  const logBoxRef = useRef<HTMLDivElement>(null);
 
   const activeTab = simulatorTabs.find((t) => t.id === activeTabId) || simulatorTabs[0];
 
@@ -119,9 +119,9 @@ export default function ProcessSimulator() {
   }, [running, activeTab.logs]);
 
   useEffect(() => {
-    // Auto-scroll logs to bottom
-    if (logEndRef.current) {
-      logEndRef.current.scrollIntoView({ behavior: "smooth" });
+    // Directly set scrollTop — avoids Lenis intercepting scrollIntoView and jumping the page
+    if (logBoxRef.current) {
+      logBoxRef.current.scrollTop = logBoxRef.current.scrollHeight;
     }
   }, [visibleLogs]);
 
@@ -212,7 +212,7 @@ export default function ProcessSimulator() {
             </div>
 
             {/* Logs Area */}
-            <div className="flex-1 min-h-[220px] max-h-[300px] overflow-y-auto flex flex-col gap-2.5 pr-2">
+            <div ref={logBoxRef} className="flex-1 min-h-[220px] max-h-[300px] overflow-y-auto flex flex-col gap-2.5 pr-2">
               {visibleLogs.length === 0 && !running && (
                 <div className="text-text-dim italic text-center py-12 select-none">
                   Ready. Click &quot;Trigger Live Simulation&quot; above to run diagnostics.
@@ -234,7 +234,6 @@ export default function ProcessSimulator() {
                   </span>
                 </div>
               ))}
-              <div ref={logEndRef} />
             </div>
 
             {/* Metrics & Progress Footer */}
