@@ -123,7 +123,7 @@ export default function JourneySection() {
       className="relative flex h-screen w-full items-center justify-center overflow-hidden bg-bg-base pt-20 pb-6 sm:pt-28 sm:pb-16"
     >
       {/* Background cyber grid lines */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(26,48,80,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(26,48,80,0.1)_1px,transparent_1px)] bg-size-[40px_40px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(26,48,80,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(26,48,80,0.1)_1px,transparent_1px)] bg-size-[40px_40px] pointer-events-none [mask-image:linear-gradient(to_bottom,transparent_0%,#000_15%)]" />
 
       <div className="relative mx-auto flex h-full w-full max-w-7xl flex-col items-center justify-between px-6 lg:flex-row lg:px-12 z-10">
         

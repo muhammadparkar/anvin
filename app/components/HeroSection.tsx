@@ -264,8 +264,8 @@ export default function HeroSection() {
 
             {/* CTAs */}
             <div ref={ctasRef} className="mt-4 sm:mt-8 lg:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <MagneticButton href="#suite" variant="primary" className="py-3 px-6 sm:py-4 sm:px-8">
-                Explore modules
+              <MagneticButton href="mailto:support@anvininfosystems.com" variant="primary" className="py-3 px-6 sm:py-4 sm:px-8">
+                Email module
               </MagneticButton>
               <MagneticButton href="#contact" variant="secondary" className="py-3 px-6 sm:py-4 sm:px-8">
                 Request Demo
@@ -281,7 +281,7 @@ export default function HeroSection() {
           >
             <SplineScene
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-              className="w-full h-full"
+              className="w-full h-full scale-120 lg:scale-135 origin-center"
             />
           </div>
 
@@ -289,7 +289,7 @@ export default function HeroSection() {
       </div>
 
       {/* Client Logos Row (Section Footer) */}
-      <div className="w-full mt-4 sm:mt-8 lg:mt-12 border-t border-divider/40 pt-4 sm:pt-8 z-10">
+      <div className="w-full mt-4 sm:mt-8 lg:mt-12 pt-4 sm:pt-8 z-10">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-6 md:gap-12 opacity-40">
             <span className="text-[10px] sm:text-xs uppercase font-bold tracking-widest text-cyan select-none">

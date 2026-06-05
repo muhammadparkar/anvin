@@ -19,7 +19,6 @@ export default function DitherSeparator({
 
   const svgString = `
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="64" viewBox="0 0 16 64">
-      <rect x="0" y="0" width="16" height="2" fill="${encodedColor}" />
       <circle cx="8" cy="4" r="4.0" fill="${encodedColor}" />
       <circle cx="0" cy="12" r="3.2" fill="${encodedColor}" />
       <circle cx="16" cy="12" r="3.2" fill="${encodedColor}" />
