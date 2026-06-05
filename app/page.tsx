@@ -1,65 +1,125 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import Navbar from "./components/Navbar";
+import HeroSection from "./components/HeroSection";
+import JourneySection from "./components/JourneySection";
+import PlatformSection from "./components/PlatformSection";
+import FeatureGrid from "./components/FeatureGrid";
+import ContentGenerationSection from "./components/ContentGenerationSection";
+import ProductsSection from "./components/ProductsSection";
+import DeploymentSection from "./components/DeploymentSection";
+import ServicesSection from "./components/ServicesSection";
+import SecuritySection from "./components/SecuritySection";
+import ProcessSimulator from "./components/ProcessSimulator";
+import ClientsSection from "./components/ClientsSection";
+import NewsSection from "./components/NewsSection";
+import TestimonialSection from "./components/TestimonialSection";
+import FaqSection from "./components/FaqSection";
+import CtaBanner from "./components/CtaBanner";
+import Footer from "./components/Footer";
+import DitherSeparator from "./components/DitherSeparator";
 
 export default function Home() {
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Refresh ScrollTrigger to recalculate all offsets in the correct DOM sequence
+    // after child components are fully rendered and hydrated.
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 250);
+
+    const handleLoad = () => {
+      ScrollTrigger.refresh();
+    };
+    window.addEventListener("load", handleLoad);
+
+    if (document.fonts) {
+      document.fonts.ready.then(() => {
+        ScrollTrigger.refresh();
+      });
+    }
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("load", handleLoad);
+    };
+  }, []);
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <div className="relative min-h-screen flex flex-col bg-bg-base">
+      {/* Global Navigation */}
+      <Navbar />
+
+      <main className="flex-1 block">
+        {/* Act 1 — Hero / The Entrance */}
+        <HeroSection />
+
+        {/* Transition: Hero (bg-base) -> JourneySection (bg-base) */}
+        <DitherSeparator color="#1A3050" direction="down" height={32} />
+        <JourneySection />
+
+        {/* Transition: JourneySection (bg-base) -> Platform (bg-surface) */}
+        <DitherSeparator color="#0D1B2E" direction="up" height={48} />
+        <PlatformSection />
+
+        {/* Transition: Platform (bg-surface) -> FeatureGrid (bg-base) */}
+        <DitherSeparator color="#0D1B2E" direction="down" height={48} />
+        <FeatureGrid />
+
+        {/* Transition: FeatureGrid (bg-base) -> ContentGenerationSection (bg-surface) */}
+        <DitherSeparator color="#0D1B2E" direction="up" height={48} />
+        <ContentGenerationSection />
+
+        {/* Stagger Transition: ContentGenerationSection (bg-surface) -> Products (bg-base) */}
+        <DitherSeparator color="#0D1B2E" direction="down" height={48} />
+        <ProductsSection />
+
+        {/* Transition: Products (bg-base) -> Deployment (bg-surface) */}
+        <DitherSeparator color="#0D1B2E" direction="up" height={48} />
+        <DeploymentSection />
+
+        {/* Transition: Deployment (bg-surface) -> Services (bg-base) */}
+        <DitherSeparator color="#0D1B2E" direction="down" height={48} />
+        <ServicesSection />
+
+        {/* Transition: Services (bg-base) -> Security (bg-surface) */}
+        <DitherSeparator color="#0D1B2E" direction="up" height={48} />
+        <SecuritySection />
+
+        {/* Transition: Security (bg-surface) -> ProcessSimulator (bg-base) */}
+        <DitherSeparator color="#0D1B2E" direction="down" height={48} />
+        <ProcessSimulator />
+
+        {/* Transition: ProcessSimulator (bg-base) -> Clients (bg-surface) */}
+        <DitherSeparator color="#0D1B2E" direction="up" height={48} />
+        <ClientsSection />
+
+        {/* Transition: Clients (bg-surface) -> News (bg-base) */}
+        <DitherSeparator color="#0D1B2E" direction="down" height={48} />
+        <NewsSection />
+
+        {/* Stagger Transition: News (bg-base) -> Testimonial (bg-base) */}
+        <DitherSeparator color="#1A3050" direction="down" height={32} />
+        <TestimonialSection />
+
+        {/* Stagger Transition: Testimonial (bg-base) -> FAQ (bg-base) */}
+        <DitherSeparator color="#1A3050" direction="down" height={32} />
+        <FaqSection />
+
+        {/* Transition: FAQ (bg-base) -> CTA (bg-surface) */}
+        <DitherSeparator color="#0D1B2E" direction="up" height={48} />
+        <CtaBanner />
+
+        {/* Transition: CTA (bg-surface) -> Footer (bg-base) */}
+        <DitherSeparator color="#0D1B2E" direction="down" height={48} />
       </main>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

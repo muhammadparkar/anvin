@@ -1,26 +1,310 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,700&family=Outfit:wght@300;400;500;700;800&display=swap');
 @import "tailwindcss";
 
+@theme {
+  --color-bg-base: #07111E;
+  --color-bg-surface: #0D1B2E;
+  --color-bg-raised: #112338;
+  --color-bg-subtle: #162D45;
+
+  --color-cobalt: #1A6FD8;
+  --color-cobalt-light: #3B8FED;
+  --color-cobalt-dim: #0F4A9C;
+
+  --color-cyan: #00C2D4;
+  --color-cyan-glow: rgba(0, 194, 212, 0.15);
+  --color-cyan-trace: rgba(0, 194, 212, 0.4);
+
+  --color-text-primary: #F0F4F8;
+  --color-text-secondary: #7A9BB5;
+  --color-text-dim: #3E5A72;
+
+  --color-divider: #1A3050;
+  --color-overlay: rgba(7, 17, 30, 0.88);
+
+  --font-display: var(--font-outfit), sans-serif;
+  --font-body: var(--font-dm-sans), sans-serif;
+  --font-stats: var(--font-bebas-neue), sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-outfit: "Outfit", sans-serif;
+  --font-dm-sans: "DM Sans", sans-serif;
+  --font-bebas-neue: "Bebas Neue", sans-serif;
+  color-scheme: dark;
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  background-color: #07111E;
+  color: #F0F4F8;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-dm-sans), sans-serif;
+  background-color: #07111E;
+  color: #F0F4F8;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07111E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1A3050;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1A6FD8;
+}
+
+/* Custom Cursor support - hide system cursor on desktop hover-capable devices */
+@media (hover: hover) and (pointer: fine) {
+  .custom-cursor-active,
+  .custom-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+/* Animations */
+@keyframes rotateArc {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.animate-rotate-arc {
+  animation: rotateArc 120s linear infinite;
+}
+
+.animate-rotate-arc-reverse {
+  animation: rotateArc 180s linear infinite reverse;
+}
+
+@keyframes drawLine {
+  from {
+    width: 0;
+  }
+  to {
+    width: 120px;
+  }
+}
+
+.animate-draw-line {
+  animation: drawLine 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Word Reveal Stagger Animation */
+@keyframes revealWord {
+  from {
+    clip-path: inset(100% 0 0 0);
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-reveal-word {
+  opacity: 0;
+  animation: revealWord 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Page load sequence */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Marquee scroll animation */
+@keyframes marqueeLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 30s linear infinite;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marqueeRight 30s linear infinite;
+}
+
+/* Draw down vertical rail */
+@keyframes drawDownRail {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+.animate-draw-down {
+  animation: drawDownRail 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Button Clip-path Sweep Transition */
+.btn-sweep {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-sweep::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-cyan);
+  clip-path: circle(0% at 0% 50%);
+  transition: clip-path 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.btn-sweep:hover::after {
+  clip-path: circle(150% at 0% 50%);
+}
+
+@keyframes clipWipe {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.animate-clip-wipe {
+  animation: clipWipe 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes lineDrawRedraw {
+  0% {
+    width: 0;
+    left: 0;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0;
+    left: 100%;
+  }
+}
+
+.animate-line-redraw {
+  animation: lineDrawRedraw 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Testimonial Slide Animations */
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Shimmer glow for CTA sections */
+@keyframes shimmerGlow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-shimmer-glow {
+  animation: shimmerGlow 3s ease-in-out infinite;
+}
+
+/* Float animation for decorative elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+  .animate-rotate-arc,
+  .animate-rotate-arc-reverse,
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation: none !important;
+  }
 }
