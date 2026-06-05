@@ -189,7 +189,7 @@ export default function ProcessSimulator() {
             <button
               onClick={triggerSimulation}
               disabled={running}
-              className={`mt-6 btn-sweep border border-cobalt bg-cobalt py-4 text-xs font-bold uppercase tracking-wider text-text-primary transition-all duration-300 hover:border-cyan hover:shadow-[0_0_15px_rgba(0,194,212,0.3)] disabled:opacity-50 disabled:cursor-not-allowed`}
+              className={`mt-6 btn-sweep border border-cobalt bg-cobalt py-4 text-xs font-bold uppercase tracking-wider text-white transition-all duration-300 hover:border-cyan hover:shadow-[0_0_15px_rgba(0,194,212,0.3)] disabled:opacity-50 disabled:cursor-not-allowed`}
               data-interactive
             >
               {running ? "Simulating..." : "Trigger Live Simulation"}
@@ -197,7 +197,7 @@ export default function ProcessSimulator() {
           </div>
 
           {/* Right Column: Interactive Console & Logs */}
-          <div className="lg:col-span-8 flex flex-col justify-between border border-divider bg-[#040A12] p-5 md:p-6 font-mono text-xs">
+          <div className="lg:col-span-8 flex flex-col justify-between border border-divider bg-bg-raised p-5 md:p-6 font-mono text-xs">
             {/* Console Header */}
             <div className="flex items-center justify-between border-b border-divider/40 pb-4 mb-4 select-none">
               <div className="flex items-center gap-2">
@@ -226,7 +226,7 @@ export default function ProcessSimulator() {
                       log.type === "success"
                         ? "text-cyan"
                         : log.type === "warning"
-                        ? "text-amber-400"
+                        ? "text-amber-600"
                         : "text-text-secondary"
                     }
                   >

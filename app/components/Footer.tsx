@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -33,7 +34,13 @@ export default function Footer() {
               className="flex items-center gap-2 font-display text-2xl font-bold tracking-tight text-text-primary"
               data-interactive
             >
-              ANVIN
+              <Image
+                src="/Anvin-LOGO-PNG-1.webp"
+                alt="Anvin"
+                width={110}
+                height={28}
+                className="h-7 w-auto object-contain"
+              />
             </Link>
             <p className="max-w-xs text-xs font-light leading-relaxed text-text-secondary">
               Deloitte Fast 50 recognized enterprise software provider delivering the AdlER Suite across the GCC region for 10+ years.

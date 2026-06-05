@@ -27,13 +27,13 @@ function HexShield() {
       </defs>
 
       {/* Outer rotating rings */}
-      <circle cx="100" cy="100" r="88" fill="none" stroke="#1A6FD8" strokeWidth="0.8" strokeDasharray="12 8" opacity="0.3" className="sec-ring-1" />
-      <circle cx="100" cy="100" r="74" fill="none" stroke="#00C2D4" strokeWidth="0.6" strokeDasharray="6 12" opacity="0.2" className="sec-ring-2" />
+      <circle cx="100" cy="100" r="88" fill="none" stroke="var(--color-cobalt)" strokeWidth="0.8" strokeDasharray="12 8" opacity="0.3" className="sec-ring-1" />
+      <circle cx="100" cy="100" r="74" fill="none" stroke="var(--color-cyan)" strokeWidth="0.6" strokeDasharray="6 12" opacity="0.2" className="sec-ring-2" />
 
       {/* Hexagon body */}
       <polygon
         points="100,14 172,56 172,140 100,182 28,140 28,56"
-        fill="#0A1828"
+        fill="var(--color-bg-surface)"
         stroke="url(#sec-grad)"
         strokeWidth="2"
         filter="url(#sec-glow)"
@@ -42,17 +42,17 @@ function HexShield() {
       <polygon
         points="100,24 162,62 162,134 100,172 38,134 38,62"
         fill="none"
-        stroke="#00C2D4"
+        stroke="var(--color-cyan)"
         strokeWidth="0.6"
         opacity="0.2"
       />
 
       {/* Lock icon (center) */}
       <g transform="translate(100,90)">
-        <rect x="-18" y="-4" width="36" height="28" rx="5" fill="#0D1B2E" stroke="#00C2D4" strokeWidth="1.8" />
-        <path d="M-10,-4 V-14 a10,10 0 0,1 20,0 V-4" fill="none" stroke="#00C2D4" strokeWidth="1.8" strokeLinecap="round" />
-        <circle className="sec-ping" cx="0" cy="12" r="5" fill="#00C2D4" opacity="0.6" />
-        <line x1="0" y1="14" x2="0" y2="20" stroke="#00C2D4" strokeWidth="1.8" strokeLinecap="round" />
+        <rect x="-18" y="-4" width="36" height="28" rx="5" fill="var(--color-bg-base)" stroke="var(--color-cyan)" strokeWidth="1.8" />
+        <path d="M-10,-4 V-14 a10,10 0 0,1 20,0 V-4" fill="none" stroke="var(--color-cyan)" strokeWidth="1.8" strokeLinecap="round" />
+        <circle className="sec-ping" cx="0" cy="12" r="5" fill="var(--color-cyan)" opacity="0.6" />
+        <line x1="0" y1="14" x2="0" y2="20" stroke="var(--color-cyan)" strokeWidth="1.8" strokeLinecap="round" />
       </g>
 
       {/* Pulse dot on hex corner */}

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
   { name: "Suite", href: "#suite" },
@@ -63,28 +64,17 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="#"
-            className="flex items-center gap-2 font-display text-2xl font-bold tracking-tight text-text-primary"
+            className="flex items-center"
             data-interactive
           >
-            <span className="relative flex items-center">
-              ANVIN
-              {/* Cyan arc logo representation */}
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                className="absolute -top-1 -right-3 text-cyan opacity-80"
-              >
-                <path
-                  d="M 4,12 A 8,8 0 0,1 20,12"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeDasharray="28 8"
-                />
-              </svg>
-            </span>
+            <Image
+              src="/Anvin-LOGO-PNG-1.webp"
+              alt="Anvin"
+              width={110}
+              height={28}
+              className="h-7 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Links Center */}
@@ -134,7 +124,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="#contact"
-              className="btn-sweep border border-cobalt bg-cobalt px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-text-primary transition-all duration-300 hover:border-cyan hover:shadow-[0_0_15px_rgba(0,194,212,0.3)]"
+              className="btn-sweep border border-cobalt bg-cobalt px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:border-cyan hover:shadow-[0_0_15px_rgba(0,194,212,0.3)]"
               data-interactive
             >
               Request Demo
@@ -167,9 +157,15 @@ export default function Navbar() {
           <Link
             href="#"
             onClick={() => setMobileMenuOpen(false)}
-            className="font-display text-2xl font-bold tracking-tight text-text-primary"
+            className="flex items-center"
           >
-            ANVIN
+            <Image
+              src="/Anvin-LOGO-PNG-1.webp"
+              alt="Anvin"
+              width={110}
+              height={28}
+              className="h-7 w-auto object-contain"
+            />
           </Link>
           <button
             onClick={() => setMobileMenuOpen(false)}
@@ -206,7 +202,7 @@ export default function Navbar() {
             <Link
               href="#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="btn-sweep border border-cobalt bg-cobalt px-8 py-3 text-sm font-semibold uppercase tracking-wider text-text-primary hover:border-cyan"
+              className="btn-sweep border border-cobalt bg-cobalt px-8 py-3 text-sm font-semibold uppercase tracking-wider text-white hover:border-cyan"
               data-interactive
             >
               Request Demo

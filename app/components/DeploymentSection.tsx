@@ -55,7 +55,7 @@ function DeploymentDiagram({ mode }: { mode: "local" | "cloud" }) {
       {/* ── ADLER CORE (center) ── */}
       <g transform="translate(210, 170)">
         <circle r="44" fill="none" stroke="#00C2D4" strokeWidth="1" opacity="0.2" className="animate-ping" style={{ animationDuration: "3s" }} />
-        <circle r="36" fill="#112338" stroke="#00C2D4" strokeWidth="2" filter="url(#dep-glow)" />
+        <circle r="36" fill="var(--color-bg-raised)" stroke="#00C2D4" strokeWidth="2" filter="url(#dep-glow)" />
         {/* Cube icon */}
         <g transform="scale(0.8) translate(-12,-12)">
           <path d="M12 3L22 8.5v7L12 21 2 15.5v-7z" fill="none" stroke="#00C2D4" strokeWidth="1.5" />
@@ -67,15 +67,15 @@ function DeploymentDiagram({ mode }: { mode: "local" | "cloud" }) {
       {/* ── LOCAL MODE ── */}
       {/* On-Prem Server (left) */}
       <g transform="translate(60, 120)" style={{ opacity: isCloud ? 0.25 : 1, transition: "opacity 0.6s" }}>
-        <rect x="-28" y="-36" width="56" height="72" rx="4" fill="#0D1B2E" stroke={isCloud ? "#1A3050" : "#1A6FD8"} strokeWidth="1.5" />
+        <rect x="-28" y="-36" width="56" height="72" rx="4" fill="var(--color-bg-surface)" stroke={isCloud ? "var(--color-divider)" : "var(--color-cobalt)"} strokeWidth="1.5" />
         {[0, 18, 36].map((y, i) => (
           <g key={i}>
-            <rect x="-20" y={y - 30} width="40" height="12" rx="2" fill="#07111E" stroke="#1A3050" strokeWidth="1" />
-            <circle cx="-10" cy={y - 24} r="2.5" fill={isCloud ? "#1A3050" : "#00C2D4"} style={{ transition: "fill 0.5s" }} />
-            <circle cx="0" cy={y - 24} r="2.5" fill={isCloud ? "#1A3050" : "#1A6FD8"} style={{ transition: "fill 0.5s" }} className={isCloud ? "" : "animate-pulse"} />
+            <rect x="-20" y={y - 30} width="40" height="12" rx="2" fill="var(--color-bg-base)" stroke="var(--color-divider)" strokeWidth="1" />
+            <circle cx="-10" cy={y - 24} r="2.5" fill={isCloud ? "var(--color-divider)" : "#00C2D4"} style={{ transition: "fill 0.5s" }} />
+            <circle cx="0" cy={y - 24} r="2.5" fill={isCloud ? "var(--color-divider)" : "var(--color-cobalt)"} style={{ transition: "fill 0.5s" }} className={isCloud ? "" : "animate-pulse"} />
           </g>
         ))}
-        <text y="50" textAnchor="middle" fontSize="10" fill={isCloud ? "#3E5A72" : "#7A9BB5"} fontFamily="sans-serif" style={{ transition: "fill 0.5s" }}>On-Premise</text>
+        <text y="50" textAnchor="middle" fontSize="10" fill={isCloud ? "var(--color-text-dim)" : "var(--color-text-secondary)"} fontFamily="sans-serif" style={{ transition: "fill 0.5s" }}>On-Premise</text>
         {!isCloud && (
           <g transform="translate(-28, -44)">
             <rect width="56" height="14" rx="3" fill="#064E3B" stroke="#34D399" strokeWidth="1" />
@@ -98,14 +98,14 @@ function DeploymentDiagram({ mode }: { mode: "local" | "cloud" }) {
         {/* Cloud shape */}
         <path
           d="M30,14 a14,14 0 0,0 -26,-2 a10,10 0 0,0 2,20 l28,0 a12,12 0 0,0 -4,-18z"
-          fill="#0D1B2E" stroke={isCloud ? "#00C2D4" : "#1A3050"} strokeWidth="1.5" transform="translate(-40,-20)"
+          fill="var(--color-bg-surface)" stroke={isCloud ? "#00C2D4" : "var(--color-divider)"} strokeWidth="1.5" transform="translate(-40,-20)"
           style={{ transition: "stroke 0.5s" }}
         />
         {/* Signal waves */}
         {isCloud && [8, 14, 20].map((r, i) => (
-          <circle key={i} cx="-10" cy="-8" r={r} fill="none" stroke="#00C2D4" strokeWidth="1" opacity={0.15 + i * 0.1} className="animate-ping" style={{ animationDuration: `${2 + i * 0.5}s` }} />
+          <circle key={i} cx="-10" cy="-8" r={r} fill="none" stroke="#00C2D4" strokeWidth="1" opacity="0.15 + i * 0.1" className="animate-ping" style={{ animationDuration: `${2 + i * 0.5}s` }} />
         ))}
-        <text y="30" textAnchor="middle" fontSize="10" fill={isCloud ? "#7A9BB5" : "#3E5A72"} fontFamily="sans-serif" style={{ transition: "fill 0.5s" }}>Qatar Cloud</text>
+        <text y="30" textAnchor="middle" fontSize="10" fill={isCloud ? "var(--color-text-secondary)" : "var(--color-text-dim)"} fontFamily="sans-serif" style={{ transition: "fill 0.5s" }}>Qatar Cloud</text>
         {isCloud && (
           <g transform="translate(-28, -48)">
             <rect width="56" height="14" rx="3" fill="#064E3B" stroke="#34D399" strokeWidth="1" />
@@ -124,22 +124,22 @@ function DeploymentDiagram({ mode }: { mode: "local" | "cloud" }) {
 
       {/* ── COMMON: WPS + Compliance nodes below ── */}
       <g transform="translate(120, 280)">
-        <circle r="20" fill="#0D1B2E" stroke="#1A3050" strokeWidth="1.5" />
+        <circle r="20" fill="var(--color-bg-surface)" stroke="var(--color-divider)" strokeWidth="1.5" />
         <rect x="-7" y="-7" width="14" height="14" fill="none" stroke="#7A9BB5" strokeWidth="1.5" />
-        <text y="32" textAnchor="middle" fontSize="9" fill="#7A9BB5" fontFamily="sans-serif">WPS</text>
+        <text y="32" textAnchor="middle" fontSize="9" fill="var(--color-text-secondary)" fontFamily="sans-serif">WPS</text>
       </g>
-      <line x1="120" y1="260" x2="175" y2="206" stroke="#1A3050" strokeWidth="1.5" strokeDasharray="4 4" />
+      <line x1="120" y1="260" x2="175" y2="206" stroke="var(--color-divider)" strokeWidth="1.5" strokeDasharray="4 4" />
 
       <g transform="translate(300, 280)">
-        <circle r="20" fill="#0D1B2E" stroke="#1A3050" strokeWidth="1.5" />
+        <circle r="20" fill="var(--color-bg-surface)" stroke="var(--color-divider)" strokeWidth="1.5" />
         <path d="M-7,-7 L7,7 M7,-7 L-7,7" stroke="#7A9BB5" strokeWidth="1.5" />
-        <text y="32" textAnchor="middle" fontSize="9" fill="#7A9BB5" fontFamily="sans-serif">Compliance</text>
+        <text y="32" textAnchor="middle" fontSize="9" fill="var(--color-text-secondary)" fontFamily="sans-serif">Compliance</text>
       </g>
-      <line x1="300" y1="260" x2="245" y2="206" stroke="#1A3050" strokeWidth="1.5" strokeDasharray="4 4" />
+      <line x1="300" y1="260" x2="245" y2="206" stroke="var(--color-divider)" strokeWidth="1.5" strokeDasharray="4 4" />
 
       {/* Double-key lock icon (center top) */}
       <g transform="translate(210, 60)">
-        <rect x="-24" y="-12" width="48" height="28" rx="4" fill="#0D1B2E" stroke="#00C2D4" strokeWidth="1.5" opacity="0.8" />
+        <rect x="-24" y="-12" width="48" height="28" rx="4" fill="var(--color-bg-surface)" stroke="#00C2D4" strokeWidth="1.5" opacity="0.8" />
         <path d="M-8,-12 V-20 a8,8 0 0,1 16,0 V-12" fill="none" stroke="#00C2D4" strokeWidth="1.5" />
         <circle cx="0" cy="2" r="4" fill="#00C2D4" opacity="0.7" />
         <line x1="0" y1="6" x2="0" y2="10" stroke="#00C2D4" strokeWidth="1.5" />

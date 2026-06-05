@@ -59,63 +59,63 @@ export default function Home() {
         <HeroSection />
 
         {/* Transition: Hero (bg-base) -> JourneySection (bg-base) */}
-        <DitherSeparator color="#1A3050" direction="down" height={32} />
+        <DitherSeparator color="#D6D5C7" direction="down" height={32} />
         <JourneySection />
 
         {/* Transition: JourneySection (bg-base) -> Platform (bg-surface) */}
-        <DitherSeparator color="#0D1B2E" direction="up" height={48} />
+        <DitherSeparator color="#E8E7DA" direction="up" height={48} />
         <PlatformSection />
 
         {/* Transition: Platform (bg-surface) -> FeatureGrid (bg-base) */}
-        <DitherSeparator color="#0D1B2E" direction="down" height={48} />
+        <DitherSeparator color="#E8E7DA" direction="down" height={48} />
         <FeatureGrid />
 
         {/* Transition: FeatureGrid (bg-base) -> ContentGenerationSection (bg-surface) */}
-        <DitherSeparator color="#0D1B2E" direction="up" height={48} />
+        <DitherSeparator color="#E8E7DA" direction="up" height={48} />
         <ContentGenerationSection />
 
         {/* Stagger Transition: ContentGenerationSection (bg-surface) -> Products (bg-base) */}
-        <DitherSeparator color="#0D1B2E" direction="down" height={48} />
+        <DitherSeparator color="#E8E7DA" direction="down" height={48} />
         <ProductsSection />
 
         {/* Transition: Products (bg-base) -> Deployment (bg-surface) */}
-        <DitherSeparator color="#0D1B2E" direction="up" height={48} />
+        <DitherSeparator color="#E8E7DA" direction="up" height={48} />
         <DeploymentSection />
 
-        {/* Transition: Deployment (bg-surface) -> Services (bg-base) */}
-        <DitherSeparator color="#0D1B2E" direction="down" height={48} />
+        {/* Transition: Products (bg-base) -> Deployment (bg-surface) */}
+        <DitherSeparator color="#E8E7DA" direction="down" height={48} />
         <ServicesSection />
 
         {/* Transition: Services (bg-base) -> Security (bg-surface) */}
-        <DitherSeparator color="#0D1B2E" direction="up" height={48} />
+        <DitherSeparator color="#E8E7DA" direction="up" height={48} />
         <SecuritySection />
 
         {/* Transition: Security (bg-surface) -> ProcessSimulator (bg-base) */}
-        <DitherSeparator color="#0D1B2E" direction="down" height={48} />
+        <DitherSeparator color="#E8E7DA" direction="down" height={48} />
         <ProcessSimulator />
 
         {/* Transition: ProcessSimulator (bg-base) -> Clients (bg-surface) */}
-        <DitherSeparator color="#0D1B2E" direction="up" height={48} />
+        <DitherSeparator color="#E8E7DA" direction="up" height={48} />
         <ClientsSection />
 
         {/* Transition: Clients (bg-surface) -> News (bg-base) */}
-        <DitherSeparator color="#0D1B2E" direction="down" height={48} />
+        <DitherSeparator color="#E8E7DA" direction="down" height={48} />
         <NewsSection />
 
         {/* Stagger Transition: News (bg-base) -> Testimonial (bg-base) */}
-        <DitherSeparator color="#1A3050" direction="down" height={32} />
+        <DitherSeparator color="#D6D5C7" direction="down" height={32} />
         <TestimonialSection />
 
         {/* Stagger Transition: Testimonial (bg-base) -> FAQ (bg-base) */}
-        <DitherSeparator color="#1A3050" direction="down" height={32} />
+        <DitherSeparator color="#D6D5C7" direction="down" height={32} />
         <FaqSection />
 
         {/* Transition: FAQ (bg-base) -> CTA (bg-surface) */}
-        <DitherSeparator color="#0D1B2E" direction="up" height={48} />
+        <DitherSeparator color="#E8E7DA" direction="up" height={48} />
         <CtaBanner />
 
         {/* Transition: CTA (bg-surface) -> Footer (bg-base) */}
-        <DitherSeparator color="#0D1B2E" direction="down" height={48} />
+        <DitherSeparator color="#E8E7DA" direction="down" height={48} />
       </main>
 
       {/* Footer */}

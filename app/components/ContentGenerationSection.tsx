@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Reveal from "./Reveal";
 
 const LOG_LINES = [
   { time: "15:52:01", text: "Syncing multi-currency balances with Doha Bank API...", type: "info" },
@@ -56,7 +55,7 @@ function LiveFeed() {
         {visible.map((line, i) => (
           <div key={i} className="flex items-start gap-2">
             <span className="text-cyan shrink-0">[{line.time}]</span>
-            <span className={line.type === "success" ? "text-[#34D399]" : line.type === "warning" ? "text-amber-400" : "text-text-secondary"}>
+            <span className={line.type === "success" ? "text-[#34D399]" : line.type === "warning" ? "text-amber-600" : "text-text-secondary"}>
               {line.text}
             </span>
           </div>
@@ -217,7 +216,7 @@ export default function ContentGenerationSection() {
           {/* Right: Live terminal */}
           <div
             ref={terminalRef}
-            className="lg:col-span-2 flex flex-col bg-[#040A12] border border-divider p-6 min-h-[460px] opacity-0"
+            className="lg:col-span-2 flex flex-col bg-bg-raised border border-divider p-6 min-h-[460px] opacity-0"
           >
             <LiveFeed />
           </div>

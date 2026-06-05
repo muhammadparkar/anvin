@@ -37,7 +37,7 @@ export default function CtaBanner() {
           <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
             <Link
               href="#contact"
-              className="group relative btn-sweep border border-cobalt bg-cobalt px-8 py-4 text-xs font-semibold uppercase tracking-wider text-text-primary hover:border-cyan hover:shadow-[0_0_20px_rgba(0,194,212,0.3)] transition-all duration-300"
+              className="group relative btn-sweep border border-cobalt bg-cobalt px-8 py-4 text-xs font-semibold uppercase tracking-wider text-white hover:border-cyan hover:shadow-[0_0_20px_rgba(0,194,212,0.3)] transition-all duration-300"
               data-interactive
             >
               Request Engineering Call
