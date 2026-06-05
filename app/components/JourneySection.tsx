@@ -65,15 +65,23 @@ export default function JourneySection() {
       gsap.set([x1Ref.current, x2Ref.current], { scale: 0, opacity: 0 });
       gsap.set([check1Ref.current, check2Ref.current, check3Ref.current, check4Ref.current], { scale: 0, opacity: 0 });
 
+      const isMobile = window.matchMedia("(max-width: 1024px)").matches;
+
       const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "+=220%",
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-        },
+        scrollTrigger: isMobile
+          ? {
+              trigger: containerRef.current,
+              start: "top 70%",
+              toggleActions: "play none none none",
+            }
+          : {
+              trigger: containerRef.current,
+              start: "top top",
+              end: "+=220%",
+              scrub: 1,
+              pin: true,
+              anticipatePin: 1,
+            },
       });
 
       // 1. Reveal broken network layout & flash red warnings
@@ -120,7 +128,7 @@ export default function JourneySection() {
   return (
     <section
       ref={containerRef}
-      className="relative flex h-screen w-full items-center justify-center overflow-hidden bg-bg-base pt-20 pb-6 sm:pt-28 sm:pb-16"
+      className="relative flex min-h-screen lg:h-screen h-auto w-full items-center justify-center overflow-hidden bg-bg-base pt-20 pb-6 sm:pt-28 sm:pb-16"
     >
       {/* Background cyber grid lines */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(26,48,80,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(26,48,80,0.1)_1px,transparent_1px)] bg-size-[40px_40px] pointer-events-none [mask-image:linear-gradient(to_bottom,transparent_0%,#000_15%)]" />
