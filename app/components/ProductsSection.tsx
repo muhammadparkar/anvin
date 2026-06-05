@@ -204,10 +204,9 @@ export default function ProductsSection() {
         </svg>
       </div>
 
-      {/* Parallax glows */}
       <ParallaxLayer speed={0.12} className="absolute inset-0 pointer-events-none select-none">
-        <div className="absolute top-1/4 left-0 w-[250px] h-[250px] bg-cobalt/8 rounded-full blur-[100px]" />
-        <div className="absolute bottom-1/4 right-0 w-[200px] h-[200px] bg-cyan/5 rounded-full blur-[80px]" />
+        <div className="absolute top-1/4 left-0 w-[250px] h-[250px] bg-[radial-gradient(circle,rgba(26,95,180,0.08)_0%,transparent_70%)]" />
+        <div className="absolute bottom-1/4 right-0 w-[200px] h-[200px] bg-[radial-gradient(circle,rgba(0,163,181,0.05)_0%,transparent_70%)]" />
       </ParallaxLayer>
 
       <div className="relative mx-auto w-full max-w-7xl px-6 md:px-12 z-10">

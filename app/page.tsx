@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
+import TrustedBy from "./components/TrustedBy";
 import JourneySection from "./components/JourneySection";
 import PlatformSection from "./components/PlatformSection";
 import FeatureGrid from "./components/FeatureGrid";
@@ -57,6 +58,9 @@ export default function Home() {
       <main className="flex-1 block">
         {/* Act 1 — Hero / The Entrance */}
         <HeroSection />
+
+        {/* Standalone Trusted By Bar */}
+        <TrustedBy />
 
         {/* Transition: Hero (bg-base) -> JourneySection (bg-base) */}
         <DitherSeparator color="#D6D5C7" direction="down" height={32} />

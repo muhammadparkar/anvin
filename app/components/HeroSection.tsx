@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -80,64 +80,19 @@ function ParticleField() {
   return <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none z-0" />;
 }
 
-function MagneticButton({
-  children,
-  className = "",
-  href = "#",
-  variant = "primary",
-}: {
-  children: React.ReactNode;
-  className?: string;
-  href?: string;
-  variant?: "primary" | "secondary";
-}) {
-  const buttonRef = useRef<HTMLAnchorElement>(null);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const button = buttonRef.current;
-    if (!button) return;
-
-    const rect = button.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-
-    const angle = Math.atan2(y, x);
-    const distance = Math.min(Math.sqrt(x * x + y * y), 8);
-    const mx = Math.cos(angle) * distance;
-    const my = Math.sin(angle) * distance;
-
-    button.style.transform = `translate3d(${mx.toFixed(1)}px, ${my.toFixed(1)}px, 0px)`;
-  };
-
-  const handleMouseLeave = () => {
-    const button = buttonRef.current;
-    if (!button) return;
-    button.style.transform = "translate3d(0px, 0px, 0px)";
-  };
-
-  const baseStyle =
-    "relative flex items-center justify-center px-8 py-4 text-sm font-semibold uppercase tracking-wider transition-all duration-300";
-
-  const styles =
-    variant === "primary"
-      ? `${baseStyle} bg-cobalt border border-cobalt text-white hover:border-cyan btn-sweep hover:shadow-[0_0_15px_rgba(0,194,212,0.3)]`
-      : `${baseStyle} border border-cobalt/40 text-text-secondary hover:border-cyan/60 hover:text-text-primary`;
-
-  return (
-    <Link
-      ref={buttonRef}
-      href={href}
-      className={`${styles} ${className}`}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      data-interactive
-    >
-      {children}
-    </Link>
-  );
-}
 
 export default function HeroSection() {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleEmailSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email.trim()) {
+      setSubmitted(true);
+    }
+  };
+
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const sublineRef = useRef<HTMLParagraphElement>(null);
@@ -186,18 +141,18 @@ export default function HeroSection() {
       {/* Premium Cyber Grid & Interactive Tech Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0 opacity-40">
         {/* Tech Grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(26,95,180,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(26,95,180,0.03)_1px,transparent_1px)] bg-size-[60px_60px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(26,95,180,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(26,95,180,0.03)_1px,transparent_1px)] bg-size-[60px_60px] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
         
         {/* Soft floating blurred mesh glows */}
-        <div className="absolute -top-[10%] left-[10%] w-[500px] h-[500px] bg-cobalt/5 rounded-full blur-[140px] animate-float" />
-        <div className="absolute top-[30%] -right-[10%] w-[600px] h-[600px] bg-cyan/6 rounded-full blur-[160px] animate-float" style={{ animationDelay: "-2s", animationDuration: "6s" }} />
+        <div className="absolute top-[-10%] left-[10%] w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(26,95,180,0.05)_0%,transparent_70%)] animate-float" />
+        <div className="absolute top-[30%] right-[-10%] w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(0,163,181,0.06)_0%,transparent_70%)] animate-float" style={{ animationDelay: "-2s", animationDuration: "6s" }} />
 
         {/* Flowing horizontal data beams */}
-        <div className="absolute top-[35%] left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan/15 to-transparent overflow-hidden">
-          <div className="w-1/3 h-full bg-gradient-to-r from-transparent via-cyan/40 to-transparent animate-beam-flow" />
+        <div className="absolute top-[35%] left-0 right-0 h-px bg-linear-to-r from-transparent via-cyan/15 to-transparent overflow-hidden">
+          <div className="w-1/3 h-full bg-linear-to-r from-transparent via-cyan/40 to-transparent animate-beam-flow" />
         </div>
-        <div className="absolute top-[70%] left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cobalt/10 to-transparent overflow-hidden">
-          <div className="w-1/4 h-full bg-gradient-to-r from-transparent via-cobalt/35 to-transparent animate-beam-flow" style={{ animationDuration: "8s", animationDelay: "-3s" }} />
+        <div className="absolute top-[70%] left-0 right-0 h-px bg-linear-to-r from-transparent via-cobalt/10 to-transparent overflow-hidden">
+          <div className="w-1/4 h-full bg-linear-to-r from-transparent via-cobalt/35 to-transparent animate-beam-flow" style={{ animationDuration: "8s", animationDelay: "-3s" }} />
         </div>
 
         {/* Concentric telemetry circles (radar style) */}
@@ -262,14 +217,44 @@ export default function HeroSection() {
               The unified operating system for scale, payroll compliance, and IoT diagnostics. Built in Qatar, trusted across GCC conglomerates.
             </p>
 
-            {/* CTAs */}
-            <div ref={ctasRef} className="mt-4 sm:mt-8 lg:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <MagneticButton href="mailto:support@anvininfosystems.com" variant="primary" className="py-3 px-6 sm:py-4 sm:px-8">
-                Email module
-              </MagneticButton>
-              <MagneticButton href="#contact" variant="secondary" className="py-3 px-6 sm:py-4 sm:px-8">
-                Request Demo
-              </MagneticButton>
+            {/* CTAs with Email Capture Input */}
+            <div ref={ctasRef} className="mt-4 sm:mt-8 lg:mt-10 w-full max-w-lg z-20">
+              {submitted ? (
+                <div className="flex items-center gap-3 p-4 bg-cyan/10 border border-cyan/30 text-text-primary rounded-none animate-fade-in">
+                  <svg className="h-5 w-5 text-cyan shrink-0 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="text-xs font-semibold tracking-wider uppercase">Engineering notified! We&apos;ll reach out shortly.</span>
+                </div>
+              ) : (
+                <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row items-stretch gap-3 w-full">
+                  <div className="relative flex-1">
+                    <input
+                      type="email"
+                      placeholder="ENTER YOUR EMAIL"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      className="w-full h-full px-5 py-4 text-xs font-semibold tracking-wider uppercase bg-bg-surface border border-cobalt/40 text-text-primary placeholder-text-dim/60 focus:outline-none focus:border-cyan transition-colors"
+                      data-interactive
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="btn-sweep border border-cobalt bg-cobalt px-6 py-4 text-xs font-semibold uppercase tracking-wider text-white hover:border-cyan hover:shadow-[0_0_15px_rgba(0,194,212,0.3)] transition-all duration-300 shrink-0 cursor-pointer"
+                    data-interactive
+                  >
+                    Submit
+                  </button>
+                  <Link
+                    href="#contact"
+                    className="flex items-center justify-center border border-cobalt/40 text-text-secondary hover:border-cyan/60 hover:text-text-primary px-6 py-4 text-xs font-semibold uppercase tracking-wider transition-all duration-300 text-center"
+                    data-interactive
+                  >
+                    Request Demo
+                  </Link>
+                </form>
+              )}
             </div>
 
           </div>
@@ -285,22 +270,6 @@ export default function HeroSection() {
             />
           </div>
 
-        </div>
-      </div>
-
-      {/* Client Logos Row (Section Footer) */}
-      <div className="w-full mt-4 sm:mt-8 lg:mt-12 pt-4 sm:pt-8 z-10">
-        <div className="mx-auto max-w-7xl px-6 md:px-12">
-          <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-6 md:gap-12 opacity-40">
-            <span className="text-[10px] sm:text-xs uppercase font-bold tracking-widest text-cyan select-none">
-              TRUSTED BY:
-            </span>
-            <span className="font-display font-bold text-xs sm:text-base tracking-widest">QNB GROUP</span>
-            <span className="font-display font-bold text-xs sm:text-base tracking-widest">QATAR AIRWAYS</span>
-            <span className="font-display font-bold text-xs sm:text-base tracking-widest">OOREDOO</span>
-            <span className="font-display font-bold text-xs sm:text-base tracking-widest">MSHEIREB</span>
-            <span className="font-display font-bold text-xs sm:text-base tracking-widest">DOHA BANK</span>
-          </div>
         </div>
       </div>
 

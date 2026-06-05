@@ -17,9 +17,8 @@ export default function PlatformSection() {
         </svg>
       </div>
 
-      {/* Parallax glow */}
       <ParallaxLayer speed={0.12} className="absolute inset-0 pointer-events-none select-none">
-        <div className="absolute bottom-0 left-1/3 w-[250px] h-[250px] bg-cobalt/8 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 left-1/3 w-[250px] h-[250px] bg-[radial-gradient(circle,rgba(26,95,180,0.08)_0%,transparent_70%)]" />
       </ParallaxLayer>
 
       <div className="relative mx-auto w-full max-w-7xl px-6 md:px-12 z-10">

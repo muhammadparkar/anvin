@@ -155,9 +155,8 @@ export default function DeploymentSection() {
 
   return (
     <section className="relative w-full bg-bg-surface py-24 overflow-hidden">
-      {/* Parallax glow */}
       <ParallaxLayer speed={0.15} className="absolute inset-0 pointer-events-none select-none">
-        <div className="absolute top-1/4 right-1/4 w-[280px] h-[280px] bg-cobalt/8 rounded-full blur-[100px]" />
+        <div className="absolute top-1/4 right-1/4 w-[280px] h-[280px] bg-[radial-gradient(circle,rgba(26,95,180,0.08)_0%,transparent_70%)]" />
       </ParallaxLayer>
 
       <div className="relative mx-auto w-full max-w-7xl px-6 md:px-12 z-10">

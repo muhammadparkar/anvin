@@ -19,8 +19,8 @@ export default function CtaBanner() {
 
       {/* Parallax glows */}
       <ParallaxLayer speed={0.2} className="absolute inset-0 pointer-events-none select-none">
-        <div className="absolute top-0 left-1/4 w-[300px] h-[300px] bg-cobalt/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-1/3 w-[250px] h-[250px] bg-cyan/6 rounded-full blur-[100px]" />
+        <div className="absolute top-0 left-1/4 w-[300px] h-[300px] bg-[radial-gradient(circle,rgba(26,95,180,0.10)_0%,transparent_70%)]" />
+        <div className="absolute bottom-0 right-1/3 w-[250px] h-[250px] bg-[radial-gradient(circle,rgba(0,163,181,0.06)_0%,transparent_70%)]" />
       </ParallaxLayer>
 
       <div className="relative mx-auto w-full max-w-4xl px-6 md:px-12 text-center z-10">

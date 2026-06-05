@@ -163,7 +163,7 @@ export default function ContentGenerationSection() {
   return (
     <section ref={sectionRef} className="relative w-full bg-bg-surface py-24 overflow-hidden">
       {/* Background glow */}
-      <div className="absolute top-1/4 left-1/4 h-[500px] w-[500px] bg-cobalt/5 rounded-full blur-[120px] pointer-events-none select-none" />
+      <div className="absolute top-1/4 left-1/4 h-[500px] w-[500px] bg-[radial-gradient(circle,rgba(26,95,180,0.05)_0%,transparent_70%)] pointer-events-none select-none" />
 
       <div className="relative mx-auto w-full max-w-7xl px-6 md:px-12 z-10">
 

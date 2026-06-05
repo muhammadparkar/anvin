@@ -23,8 +23,8 @@ export default function StatsSection() {
     <section className="relative w-full bg-bg-base py-24 overflow-hidden">
       {/* Parallax background glow */}
       <ParallaxLayer speed={0.2} className="absolute inset-0 pointer-events-none select-none">
-        <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] bg-cobalt/10 rounded-full blur-[120px]" />
-        <div className="absolute top-1/3 right-1/4 w-[200px] h-[200px] bg-cyan/8 rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] bg-[radial-gradient(circle,rgba(26,95,180,0.10)_0%,transparent_70%)]" />
+        <div className="absolute top-1/3 right-1/4 w-[200px] h-[200px] bg-[radial-gradient(circle,rgba(0,163,181,0.08)_0%,transparent_70%)]" />
       </ParallaxLayer>
 
       <div className="relative mx-auto w-full max-w-7xl px-6 md:px-12 z-10">
